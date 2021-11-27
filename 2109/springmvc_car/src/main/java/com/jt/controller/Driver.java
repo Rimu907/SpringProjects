@@ -19,7 +19,4 @@ public class Driver {
     public void stop(){
         carService.stop();
     }
-    public void shoot(){
-        carService.shoot();
-    }
 }

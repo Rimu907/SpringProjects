@@ -9,4 +9,4 @@ import com.jt.mapper.Iweapon;
  * @Author:NANDI_GUO
  */
 
-public interface CarService extends ICar,ITank{}
+public interface CarService extends ICar{}

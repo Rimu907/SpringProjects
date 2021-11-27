@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class Tank implements ITank{
+    public int weight = 200;
     @Override
     public void start() {
         System.out.println("坦克启动了 咔咔咔");
