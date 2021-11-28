@@ -17,6 +17,7 @@ import java.util.Map;
  */
 @Service
 public class CarServiceImpl implements CarService {
+    public static String type;
     @Autowired
     @Qualifier("truck")
     public ICar car;
@@ -41,7 +42,7 @@ public class CarServiceImpl implements CarService {
         Field hField = h.getClass().getDeclaredField("memberValues");
         hField.setAccessible(true);
         Map memberValues = (Map) hField.get(h);
-        memberValues.put("value", "tank");
+        memberValues.put("value", type);
         System.out.println(qualifier.value());
     }
 

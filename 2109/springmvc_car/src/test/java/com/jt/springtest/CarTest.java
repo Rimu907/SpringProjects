@@ -26,21 +26,11 @@ import java.util.Map;
 public class CarTest {
     @Test
     public void testCar() throws Exception {
+
+        CarServiceImpl.type = "raceCar";
+
         ApplicationContext context =
                 new AnnotationConfigApplicationContext(SpringConfig.class);
-
-//        CarServiceImpl cs = context.getBean(CarServiceImpl.class);
-//        Field field = CarServiceImpl.class.getDeclaredField("car");
-//        Qualifier qualifier = field.getAnnotation(Qualifier.class);
-//        System.out.println(qualifier.value());
-//
-//        InvocationHandler h = Proxy.getInvocationHandler(qualifier);
-//        Field hField = h.getClass().getDeclaredField("memberValues");
-//        hField.setAccessible(true);
-//        Map memberValues = (Map) hField.get(h);
-//        memberValues.put("value", "raceCar");
-//        System.out.println(qualifier.value());
-        context.getBean(CarServiceImpl.class).type = "tank";
 
         Driver driver = context.getBean(Driver.class);
         driver.start();
