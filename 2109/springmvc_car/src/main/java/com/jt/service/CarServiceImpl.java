@@ -19,8 +19,8 @@ import java.util.Map;
 public class CarServiceImpl implements CarService {
     public static String type;
     @Autowired
-    @Qualifier("truck")
-    public ICar car;
+    @Qualifier
+    private ICar car;
 
 
     @Override
@@ -36,14 +36,14 @@ public class CarServiceImpl implements CarService {
         //context.getBean(CarServiceImpl.class);
         Field field = CarServiceImpl.class.getDeclaredField("car");
         Qualifier qualifier = field.getAnnotation(Qualifier.class);
-        System.out.println(qualifier.value());
+        //System.out.println(qualifier.value());
 
         InvocationHandler h = Proxy.getInvocationHandler(qualifier);
         Field hField = h.getClass().getDeclaredField("memberValues");
         hField.setAccessible(true);
         Map memberValues = (Map) hField.get(h);
         memberValues.put("value", type);
-        System.out.println(qualifier.value());
+        System.out.println("当前传入注解的参数是: "+qualifier.value());
     }
 
 }
