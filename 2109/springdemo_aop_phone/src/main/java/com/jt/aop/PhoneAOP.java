@@ -13,7 +13,9 @@ import org.springframework.stereotype.Component;
 @Component
 @Aspect
 public class PhoneAOP {
-    @Pointcut("bean(phoneServiceImpl)")
+//    @Pointcut("bean(phoneServiceImpl)")
+//    public void pointcut(){}
+    @Pointcut("@annotation(com.jt.anno.Ndg)")
     public void pointcut(){}
 
     @Around("pointcut()")

@@ -11,8 +11,8 @@ import java.util.Calendar;
  */
 
 @Component
-public class CalendarFactory implements FactoryBean<Calendar>{
-    public CalendarFactory(){
+public class CalendarFactory implements FactoryBean<Calendar> {
+    public CalendarFactory() {
         System.out.println("工程模式的无参构造");
     }
     @Override

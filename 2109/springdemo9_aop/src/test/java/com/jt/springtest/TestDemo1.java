@@ -9,6 +9,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import javax.jws.soap.SOAPBinding;
 import javax.swing.*;
+import java.util.Arrays;
 
 /**
  * @Date:2021/11/29 9:56
@@ -20,6 +21,10 @@ public class TestDemo1 {
         ApplicationContext context =
                 new AnnotationConfigApplicationContext(SpringConfig.class);
         UserService userService = context.getBean(UserService.class);
-        userService.addUser();
+        //userService.addUser();
+        //userService.delUser();
+        System.out.println(userService.getClass());
+        String user = userService.findUser();
+        System.out.println("返回值为"+user);
     }
 }

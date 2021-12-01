@@ -1,5 +1,6 @@
 package com.jt.service;
 
+import com.jt.anno.Ndg;
 import com.jt.mapper.PhoneInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -25,6 +26,7 @@ public class PhoneServiceImpl implements PhoneService{
         phoneInterface.message();
     }
 
+    @Ndg
     @Override
     public void play() {
         phoneInterface.play();
