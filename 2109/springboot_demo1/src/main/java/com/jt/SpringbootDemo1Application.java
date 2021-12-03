@@ -9,8 +9,6 @@ public class SpringbootDemo1Application {
     public static void main(String[] args) {
         //springBoot方式管理的spring容器
         System.out.println("最终项目启动");
-        System.out.println("sgh");
-        System.out.println("asdasd");
         SpringApplication.run(SpringbootDemo1Application.class, args);
     }
 
