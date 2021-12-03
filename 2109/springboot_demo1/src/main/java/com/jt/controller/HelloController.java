@@ -20,6 +20,6 @@ public class HelloController {
     public String HelloController(){
         User user = new User();
         user.setId(100).setName("tomcat");
-        return user.toString();
+        return "我又行了!"+user.toString();
     }
 }
