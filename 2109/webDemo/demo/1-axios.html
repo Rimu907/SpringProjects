@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Axio测试</title>
+		<script type="text/javascript" src="../js/axios.js">
+		</script>
+	</head>
+	<body>
+		<h1>Axios测试案例-1</h1>
+		<script>
+		// var url = "http://localhost:8080/axios/getUserById?id=100"
+		// // 可以编辑Axios发送ajax请求
+		// axios.get(url).
+		// 	  then(function(result){//回调函数
+		// 	console.log(result);
+		// })
+		let url1 = "http://localhost:8080/axios/getUserById?id=100"
+		axios.get(url1)
+		.then(function(promise){
+			console.log(promise.data)
+		})
+		
+		let user2 = {name:"tomcat",age:1000}
+		let url2 = "http://localhost:8080/axios/getUserByNA"
+		axios.get(url2,{params:user2})
+		.then(function(promise){
+			console.log(promise.data)
+			if(promise.status==200){
+				console.log("业务执行成功");
+			}else{
+				console.log("业务执行失败")
+			}
+		})
+		
+		// let user3 = {name:"tomcat",age:1000,sex:男}
+		// let url3 = "http://localhost:8080/axios/getUserByNS/tomcat/男"
+		// axios.get(url3,{params:user3})
+		// .then(function(promise){
+		// 	console.log(promise.data)
+		// 	if(promise.status==200){
+		// 		console.log("业务执行成功");
+		// 	}else{
+		// 		console.log("业务执行失败")
+		// 	}
+		// })
+		let user3 = {name:'yilang',sex:'男'}
+		let url3 = `http://localhost:8080/axios/getUserByNS/${user3.name}/${user3.sex}`
+		axios.get(url3)
+		.then(function(promise){
+			console.log(promise.data);
+		})
+		
+		
+		let user4 = {server:"艾欧尼亚",name:"她比凯尔温柔"}
+		let url4 = `http://localhost:8080/Lol/getAccount/${user4.server}/${user4.name}`
+		axios.get(url4).then(function(promise){
+			if(promise.status == 200){
+				console.log("账号正确")
+				console.log(promise.data);
+			}else{
+				console.log("账号错误")
+			}
+		})
+		</script>
+	</body>
+</html>

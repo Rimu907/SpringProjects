@@ -1,0 +1,5 @@
+#基本语法
+#1.数据结构 key-value结构
+#2.写法 key: value  中间有空格
+server:
+  port: 8080
