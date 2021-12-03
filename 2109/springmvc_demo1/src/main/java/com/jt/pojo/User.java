@@ -11,6 +11,15 @@ public class User implements Serializable{
     private String name;
     private Integer age;
     private  String sex;
+    private String server;
+
+    public String getServer() {
+        return server;
+    }
+
+    public void setServer(String server) {
+        this.server = server;
+    }
 
     public Integer getId() {
         return id;
