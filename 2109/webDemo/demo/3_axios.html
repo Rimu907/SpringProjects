@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>简化测试三</title>
+		<script src="../js/axios.js"></script>
+		<h1>简化测试三</h1>
+	</head>
+	<body>
+		<script>
+			axios.defaults.baseURL=`http://localhost:8080`
+			// axios.get(`/web/hello`).then(promise => {
+			// 	alert(promise.data)
+			// })
+			/*简化方式三: async await简化调用
+			问题描述:如果ajax嵌套层级过多,会引发回调地狱问题
+			解决问题: */
+			//let result = axios.get("/web/hello")
+			async function gethello(){
+				let promise = await axios.get("/web/hello")
+				return promise.data;
+			}
+			
+			async function gethello1(args){
+				let {data:res} = await axios.get("/web/hello1",{params:args})
+				alert(res)
+			}
+			let re = gethello()
+			gethello1(re)
+			
+		</script>
+	</body>
+</html>
