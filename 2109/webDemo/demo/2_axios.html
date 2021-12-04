@@ -1,49 +1,48 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Axio测试</title>
-		<script src="../js/axios.js"></script>
-	</head>
-	<body>
-		<h1>Axios测试案例第二部分</h1>
-		<script>
-			/*
-				1.axios.post
-			*/
-		   let url1 = `http://localhost:8080/axios/saveUser`
-		   let user1 = {id:100,name:"cat",age:2,sex:"female"}
-		   axios.post(url1,user1).then(function(promise){
-			   console.log(promise.data)
-		   })
-		   
-		   /**
-			* 业务需求:
-			* 完成用户的修改操作将ID扽与100的数据,name改为张三 age改为18,性别改为女
-			* URL: `http://localhost:8080/axios/updateUser`
-			* 返回值:修改成功 后端打印数据
-			* */
-			
-			let url2 = `http://localhost:8080/axios/updateUser`
-			let user2 = {id:100, name:"张三", age:18,sex:"女"}
-			axios.put(url2,user2).then(function(promise){
-				console.log(promise.data)
-			})
-			
-			/**
-						* 业务需求:
-						* 完成用户的修改操作将ID扽与100的数据,name改为张三 age改为18,性别改为女
-						* URL: `http://localhost:8080/axios/deleteUserById`
-						* 返回值:修改成功 后端打印数据
-						* */
-			let user3 = {id:1}
-			let url3 = `http://localhost:8080/axios/deleteUser/${user3.id}`
-			axios.delete(url3)
-			.then(function(promise){
-				console.log(promise.data);
-			})
-			
-		</script>
-	</body>  
-	
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axio测试</title>
+    <script src="../js/axios.js"></script>
+  </head>
+
+  <body>
+    <h1>Axios测试案例第二部分</h1>
+    <script>
+      /*
+			1.axios.post
+		*/
+      let url1 = `http://localhost:8080/axios/saveUser`;
+      let user1 = { id: 100, name: "cat", age: 2, sex: "female" };
+      axios.post(url1, user1).then(function (promise) {
+        console.log(promise.data);
+      });
+
+      /**
+       * 业务需求:
+       * 完成用户的修改操作将ID扽与100的数据,name改为张三 age改为18,性别改为女
+       * URL: `http://localhost:8080/axios/updateUser`
+       * 返回值:修改成功 后端打印数据
+       * */
+
+      let url2 = `http://localhost:8080/axios/updateUser`;
+      let user2 = { id: 100, name: "张三", age: 18, sex: "女" };
+      axios.put(url2, user2).then(function (promise) {
+        console.log(promise.data);
+      });
+
+      /**
+       * 业务需求:
+       * 完成用户的修改操作将ID扽与100的数据,name改为张三 age改为18,性别改为女
+       * URL: `http://localhost:8080/axios/deleteUserById`
+       * 返回值:修改成功 后端打印数据
+       * */
+      let user3 = { id: 1 };
+      let url3 = `http://localhost:8080/axios/deleteUser/${user3.id}`;
+      axios.delete(url3).then(function (promise) {
+        console.log(promise.data);
+      });
+    </script>
+  </body>
 </html>

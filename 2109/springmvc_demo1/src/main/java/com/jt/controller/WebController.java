@@ -24,4 +24,8 @@ public class WebController {
     public String hello1(){
         return "你好,嵌套";
     }
+    @GetMapping("/hello2")
+    public String hello2(){
+        return "你好,Vscode";
+    }
 }

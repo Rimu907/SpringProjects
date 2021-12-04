@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../js/axios.js"></script>
+    <title>Document</title>
+    <h1>axios测试4</h1>
+  </head>
+
+  <body>
+    <input type="button" value="click me" />
+
+    <script>
+      axios.defaults.baseURL = `http://localhost:8080`;
+      async function gethi() {
+        let { data: res } = await axios.get("/web/hello2");
+        alert(res);
+      }
+      gethi();
+    </script>
+  </body>
+</html>
