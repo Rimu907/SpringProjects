@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace是mybaits映射文件的唯一标识,与接口对应-->
+<mapper namespace="com.jt.mapper.UserMapper">
+    <!--id 表示接口方法
+        resultType 返回值结果类型
+    -->
+    <select id="findAll" resultType="User">
+        select * from demo_user
+    </select>
+
+    <select id="findUserById" resultType="User">
+        select * from demo_user where id = #{id}
+    </select>
+
+    <select id="findByName" resultType="User">
+        select * from demo_user where name = #{name} and age = #{age}
+    </select>
+
+    <select id="findByAge" resultType="User">
+        select * from demo_user where age > #{as} and age &lt; #{ae}
+    </select>
+
+    <select id="findUserByAge2" resultType="User">
+        select * from demo_user where age > #{as} and age &lt; #{ae}
+    </select>
+
+    <!-- 特别注意表名的大小写问题-->
+    <select id="findUserByWord" resultType="User">
+        select <include refid="tableColum"/> from demo_user where name like #{name}
+    </select>
+
+    <select id="findListByIn" resultType="User">
+        select <include refid="tableColum"/> from demo_user where id in (
+            <foreach collection="array" item="id" separator=",">
+                #{id}
+            </foreach>
+        )
+    </select>
+    <insert id="saveUser">
+        insert into demo_user(id, name,age,sex)
+            value (null,#{name},#{age},#{sex})
+    </insert>
+
+    <select id="findR" resultType="User">
+        select * from demo_user
+        <where>
+            <choose>
+                <when test="name != null">
+                    name = #{name}
+                </when>
+                <when test="age != null">
+                    age = #{age}
+                </when>
+                <otherwise>
+                    sex = #{sex}
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+    <sql id="tableColum">
+        id,name,age,sex
+    </sql>
+
+</mapper>

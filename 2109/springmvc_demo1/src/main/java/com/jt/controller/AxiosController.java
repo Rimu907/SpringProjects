@@ -61,8 +61,9 @@ public class AxiosController {
     }
 
     @PutMapping("/updateUser")
-    public String updateUser(@RequestBody User user) {
+    public String updateUser(@RequestBody User user) { ;
         System.out.println(user);
+        System.out.println(user.getName());
         return "修改成功";
     }
 
