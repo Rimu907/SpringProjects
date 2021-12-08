@@ -5,20 +5,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
-import java.io.Serializable;
-
 /**
- * @Date:2021/12/7 14:33
+ * @Date:2021/12/7 21:56
  * @Author:NANDI_GUO
  */
 @Data
 @Accessors(chain = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class Emp implements Serializable {
-    private Integer id;
-    private String name;
-    private Integer age;
-    //一个员工对应一个部门
-    private Dept dept;
+public class User {
+    private String username;
+    private Integer password;
 }

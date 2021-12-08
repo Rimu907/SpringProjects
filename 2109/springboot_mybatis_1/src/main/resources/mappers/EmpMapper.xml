@@ -5,5 +5,17 @@
 
 <!--namespace是mybaits映射文件的唯一标识,与接口对应-->
 <mapper namespace="com.jt.mapper.EmpMapper">
+    <select id="findAll" resultMap="empRM">
+        select emp.*, dept_name
+	    from emp,dept
+	    where emp.dept_id = dept.dept_id
+    </select>
 
+    <resultMap id="empRM" type="Emp" autoMapping="true">
+        <id column="id" property="id"/>
+        <association property="dept" javaType="Dept" autoMapping="true">
+            <id column="dept_id" property="deptId"/>
+<!--            <resultMap column="dept_name" property="deprName"/>-->
+        </association>
+    </resultMap>
 </mapper>

@@ -5,5 +5,15 @@
 
 <!--namespace是mybaits映射文件的唯一标识,与接口对应-->
 <mapper namespace="com.jt.mapper.DeptMapper">
-
+    <select id="findAll" resultMap="deptRM">
+        select dept.dept_name, emp.*
+            from dept,emp
+            where emp.dept_id = dept.dept_id
+    </select>
+    <resultMap id="deptRM" type="Dept" autoMapping="true">
+        <id property="deptId" column="dept_id"/>
+        <collection property="emps" ofType="Emp">
+            <id property="id" column="id"/>
+        </collection>
+    </resultMap>
 </mapper>
