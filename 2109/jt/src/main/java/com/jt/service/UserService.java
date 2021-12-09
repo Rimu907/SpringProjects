@@ -1,11 +1,17 @@
 package com.jt.service;
 
-import org.apache.catalina.User;
+import com.jt.pojo.User;
 
-/**
- * @Date:2021/12/7 21:53
- * @Author:NANDI_GUO
- */
+import java.util.List;
+
 public interface UserService {
+    
+
+    List<User> findAll();
+
+
+
+    String register(User user);
+
     String login(User user);
 }

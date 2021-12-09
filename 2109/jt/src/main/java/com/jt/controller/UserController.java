@@ -1,31 +1,49 @@
 package com.jt.controller;
 
+import com.jt.pojo.User;
 import com.jt.service.UserService;
 import com.jt.vo.SysResult;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * @Date:2021/12/7 21:46
- * @Author:NANDI_GUO
- */
-@Component
 @RestController
-@CrossOrigin
 @RequestMapping("/user")
+@CrossOrigin
 public class UserController {
+
     @Autowired
     private UserService userService;
 
-    @PostMapping("/login")
-    public String login(@RequestBody User user){
+    @GetMapping("/findAll")
+    public List<User> findAll(){
 
-        //返回值一个字符串 token
-        System.out.println(user);
-        return "用户登录";
+
+        return userService.findAll();
+    }
+    /**
+     * 业务:完成用户登录操作
+     * URL:/user/login
+     * 参数:username/password  json串
+     * 返回值SysResult对象  token秘钥
+     */
+    @PostMapping("/login")
+    public SysResult login(@RequestBody User user){
+        //业务逻辑:根据用户名密码查询数据库  true:token  false  null
+        String token = userService.login(user);
+        if (token == null){
+            return SysResult.fail();
+        }
+        return SysResult.success(token);
+    }
+
+    @PostMapping("/register")
+    public SysResult register(@RequestBody User user){
+        String token = userService.register(user);
+        if (token == null){
+            return SysResult.fail();
+        }
+        return SysResult.success(token);
     }
 }

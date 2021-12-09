@@ -1,19 +1,19 @@
 package com.jt.pojo;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
- * @Date:2021/12/7 21:56
- * @Author:NANDI_GUO
+ * @author 刘昱江
+ * 时间 2021/2/2
  */
 @Data
 @Accessors(chain = true)
-@NoArgsConstructor
-@AllArgsConstructor
-public class User {
+public class User extends BasePojo{
+    private Integer id;
     private String username;
-    private Integer password;
+    private String password;
+    private String phone;
+    private String email;
+    private Boolean status;     //true 正常 false 停用
 }
