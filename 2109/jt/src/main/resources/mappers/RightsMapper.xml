@@ -5,30 +5,24 @@
 
 <mapper namespace="com.jt.mapper.RightsMapper">
     <cache />
-    <select id="getRightsList" resultMap="rights">
-SELECT * FROM (SELECT * FROM rights WHERE parent_id = 0)p LEFT JOIN
-(SELECT id c_id,NAME c_name,parent_id c_parent_id,path c_path,LEVEL c_level,created c_created,updated c_updated FROM rights)c
-ON p.id = c.c_parent_id
+    <select id="getRightsList" resultMap="Rights">
+        select * from (select * from rights where parent_id = 0)p
+        left join
+        (select id c_id,name c_name,parent_id c_parent_id,path c_path,level c_level,created c_created,updated c_updated from rights)c
+        on p.id = c.c_parent_id
     </select>
 
-
-    <resultMap id="rights" type="Rights" autoMapping="true">
+    <resultMap id="Rights" type="Rights" autoMapping="true">
         <id column="id" property="id"/>
-        <collection property="children" ofType="Rights" autoMapping="true">
-            <id column="c_id" property="id"/>
-            <result column="c_name" property="name"/>
-            <result column="c_parent_id" property="parentId"/>
-            <result column="c_path" property="path"/>
-            <result column="c_level" property="level"/>
-            <result column="c_created" property="created"/>
-            <result column="c_updated" property="updated"/>
+        <collection property="children" ofType="Rights">
+            <id property="id" column="c_id"/>
+            <result property="name" column="c_name"/>
+            <result property="parentId" column="c_parent_id"/>
+            <result property="path" column="c_path"/>
+            <result property="level" column="c_level"/>
+            <result property="created" column="c_created"/>
+            <result property="updated" column="c_updated"/>
         </collection>
     </resultMap>
 
-<!--    <select id="finOneList" resultType="Rights">-->
-<!--    select * from rights where parent_id = 0-->
-<!--</select>-->
-<!--    <select id="findtwoList" resultType="Rights">-->
-<!--    select * from rights where parent_id = #{id}-->
-<!--</select>-->
 </mapper>

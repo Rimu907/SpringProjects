@@ -15,11 +15,9 @@ import java.util.List;
 public class RightsServiceImpl implements RightsService{
 
     @Autowired
-    private RightsMapper rightsMapper;
-
+    private RightsMapper mapper;
     @Override
     public List<Rights> getRightsList() {
-        return rightsMapper.getRightsList();
+        return mapper.getRightsList();
     }
-
 }

@@ -10,7 +10,4 @@ import java.util.List;
  */
 public interface RightsMapper {
    List<Rights> getRightsList();
-    List<Rights> finOneList();
-
-    List<Rights> findtwoList(Integer id);
 }

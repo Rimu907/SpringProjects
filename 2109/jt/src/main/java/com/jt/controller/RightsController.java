@@ -25,8 +25,7 @@ public class RightsController {
 
     @GetMapping("/getRightsList")
     public SysResult getRightsList(){
-        List<Rights> list =  rightsService.getRightsList();
-        return SysResult.success(list);
+        List<Rights> rightsList = rightsService.getRightsList();
+        return SysResult.success(rightsList);
     }
-
 }
