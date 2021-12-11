@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jt.mapper.ItemCatMapper">
+
+    <select id="findItemList" resultType="Item">
+        select * from item
+        <where>
+            <if test="query != null and query !=''">title like "%"#{query}"%"</if>
+        </where>
+        limit #{start},#{size}
+    </select>
+
+    <insert id="saveItemCat">
+        insert into item_cat values (null, #{parentId}, #{name},#{status},#{level},#{created},#{updated})
+    </insert>
+
+    <select id="getItemCatList" resultMap="ItemCat">
+        select * from (select * from item_cat where parent_id = 0)p
+        left join
+        ((select id c_id,parent_id c_parent_id,name c_name, status c_status, level c_level, created c_created, updated c_updated
+            from item_cat)c
+            left join
+            (select id c2_id,parent_id c2_parent_id,name c2_name, status c2_status, level c2_level, created c2_created, updated c2_updated
+            from item_cat)c2 on c.c_id = c2.c2_parent_id)
+        on p.id = c.c_parent_id
+    </select>
+
+    <resultMap id="ItemCat" type="ItemCat" autoMapping="true">
+        <id column="id" property="id"/>
+        <collection property="children" ofType="ItemCat" autoMapping="true">
+            <id property="id" column="c_id"/>
+            <result property="parentId" column="c_parent_id"/>
+            <result property="name" column="c_name"/>
+            <result property="status" column="c_status"/>
+            <result property="level" column="c_level"/>
+            <result property="created" column="c_created"/>
+            <result property="updated" column="c_updated"/>
+
+            <collection property="children" ofType="ItemCat" autoMapping="true">
+                <id property="id" column="c2_id"/>
+                <result property="parentId" column="c2_parent_id"/>
+                <result property="name" column="c2_name"/>
+                <result property="status" column="c2_status"/>
+                <result property="level" column="c2_level"/>
+                <result property="created" column="c2_created"/>
+                <result property="updated" column="c2_updated"/>
+            </collection>
+
+        </collection>
+
+    </resultMap>
+
+</mapper>

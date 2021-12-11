@@ -11,10 +11,19 @@
 
 
     <insert id="insertUser">
-        insert into user values (null, #{username}, #{password},#{phone},#{email},1,null,null)
+        insert into user values (null, #{username}, #{password},#{phone},#{email},#{status},#{created},#{updated})
     </insert>
 
     <select id="findUserByUP" resultType="User">
         select * from user where username = #{username} and password = #{password}
     </select>
+
+    <select id="findUserList" resultType="User">
+        select * from user
+            <where>
+                <if test="query != null and query !=''">username like "%"#{query}"%"</if>
+            </where>
+        limit #{start},#{size}
+    </select>
+
 </mapper>
