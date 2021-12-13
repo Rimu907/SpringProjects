@@ -1,4 +1,5 @@
 package com.jt.mapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.jt.pojo.Item;
 import com.jt.pojo.ItemCat;
 import com.jt.pojo.User;
@@ -13,7 +14,7 @@ import java.util.List;
  * @Date:2021/12/10 15:31
  * @Author:NANDI_GUO
  */
-public interface ItemCatMapper {
+public interface ItemCatMapper extends BaseMapper<ItemCat> {
     List<ItemCat> getItemCatList();
 
     @Update("update item_cat set status = #{status}, updated = #{updated} where id = #{id}")
