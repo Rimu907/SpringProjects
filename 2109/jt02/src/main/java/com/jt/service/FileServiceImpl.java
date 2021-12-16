@@ -2,6 +2,7 @@ package com.jt.service;
 
 import com.jt.vo.ImageVO;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
@@ -28,6 +29,7 @@ public class FileServiceImpl implements FileService{
     * 4.防止文件重名                  UUID
     * */
     @Override
+    @Transactional
     public ImageVO upload(MultipartFile file) {
         String fileName = file.getOriginalFilename().toLowerCase();
         //String type = fileName.split(".")[1];
@@ -71,4 +73,13 @@ public class FileServiceImpl implements FileService{
         }
     }
 
+    @Override
+    @Transactional
+    public void deleteFile(String virtualPath) {
+        String localPath = rootDir + virtualPath;
+        File file = new File(localPath);
+        if(file.exists()){
+            file.delete();
+        }
+    }
 }

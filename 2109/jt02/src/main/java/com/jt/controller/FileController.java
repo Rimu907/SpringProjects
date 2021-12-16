@@ -3,11 +3,9 @@ package com.jt.controller;
 import com.jt.service.FileService;
 import com.jt.vo.ImageVO;
 import com.jt.vo.SysResult;
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -57,5 +55,12 @@ public class FileController {
             System.out.println("文件上传失败");
         }
         return SysResult.success(imageVO);
+    }
+
+    @DeleteMapping("/deleteFile")
+    public SysResult deleteFile(String virtualPath){
+
+        fileService.deleteFile(virtualPath);
+        return SysResult.success();
     }
 }
