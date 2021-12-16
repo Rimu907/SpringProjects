@@ -19,7 +19,7 @@ import  java.util.Date;
 @Service
 public class FileServiceImpl implements FileService{
     private String rootDir = "A:/SpringProjects/2109/images";
-    private String rootURL = "http://image.jt.com";
+    private String rootURL = "https://github.com/Rimu907/SpringProjects/tree/main/2109/images";
 
     /*
     * 1.校验文件是否为图片             检验图片类型
