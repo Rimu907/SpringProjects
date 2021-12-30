@@ -5,18 +5,23 @@ package hjtests;
  * @Author:NANDI_GUO
  */
 import java.util.*;
+
 public class hj37 {
     public static void main(String[] args) {
-        int num  = 5;
-        int res = rab(num);
-        System.out.println(res);
-    }
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNext()) {
+            int month = sc.nextInt();
+            int oneMonth = 1;
+            int twoMonth = 0;
+            int threeMonth = 0;
 
-    private static int rab(int num) {
-        if (num < 3){
-            return 1;
-        }else{
-            return num/3 + rab(num/3);
+            int addVal = 0;
+            for (int i = 2; i <= month; i++) {
+                threeMonth += twoMonth;
+                twoMonth = oneMonth;
+                oneMonth = threeMonth;
+            }
+            System.out.println(oneMonth+twoMonth+threeMonth);
         }
     }
 }
