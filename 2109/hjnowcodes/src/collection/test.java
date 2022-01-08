@@ -9,11 +9,26 @@ import java.util.regex.Pattern;
  * @Author:NANDI_GUO
  */
 public class test {
-    @Test
-    public void test01(){
-        char c = 'r';
-        String s = String.valueOf(c);
-        System.out.println(s);
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        String str2 = sc.nextLine();
+        char[] c = str.toCharArray();
+        char[] c2 = str2.toCharArray();
+
+        int m = c.length; int n = c2.length;
+
+        char[] c3 = new char[c2.length + c.length];
+        for (int i = 0; i < m; i++) {
+            c3[i] = c[i];
+        }
+        for (int i = m; i < m+n; i++) {
+            c3[i] = c2[i-m];
+        }
+        
+        Arrays.sort(c3);
+        System.out.println(c3);
 
     }
 

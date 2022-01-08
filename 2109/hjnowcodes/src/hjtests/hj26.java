@@ -25,12 +25,8 @@ public class hj26 {
                 letters.add(ch);
             }
         }
-        Collections.sort(letters, new Comparator<Character>() {
-            @Override
-            public int compare(Character o1, Character o2) {
-                return Character.toLowerCase(o1)-Character.toLowerCase(o2);
-            }
-        });
+        Collections.sort(letters, (o1, o2) -> Character.toLowerCase(o1)-Character.toLowerCase(o2));
+
         StringBuffer result = new StringBuffer();
         for (int i = 0, j = 0; i < str.length(); i++) {
             if (Character.isLetter(str.charAt(i))) {
