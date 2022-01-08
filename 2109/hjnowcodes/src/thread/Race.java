@@ -7,12 +7,16 @@ package thread;
 public class Race implements Runnable {
     private static String winner;
 
-    @lombok.SneakyThrows
+    //@lombok.SneakyThrows
     @Override
     public void run() {
         for (int i = 0; i <= 100 ; i++) {
             if (Thread.currentThread().getName().equals("兔子")){
-                Thread.sleep(1);
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
 
             boolean flag = gameOver(i);
