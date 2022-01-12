@@ -26,7 +26,7 @@
        * 返回值:修改成功 后端打印数据
        * */
 
-      let url2 = `http://localhost:8080/axios/updateUser`;
+      let url= `http://localhost:8080/axios/updateUser`;
       let user2 = { id: 100, name: "张三", age: 18, sex: "女" };
       axios.put(url2, user2).then(function (promise) {
         console.log(promise.data);
